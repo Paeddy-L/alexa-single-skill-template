@@ -35,9 +35,9 @@
           "name": "PlayStationIntent",
           "slots": [],
           "samples": [
-            "los",
-            "öffnen",
-            "starten"
+            "starte",
+            "spiele",
+            "öffne"
           ]
         },
         {
@@ -51,6 +51,52 @@
         {
           "name": "AMAZON.RepeatIntent",
           "samples": []
+        },
+        {
+          "name": "CurrentSongIntent",
+          "slots": [],
+          "samples": [
+            "frag was aktuell läuft",
+            "frage was aktuell läuft",
+            "frag wie der titel heißt",
+            "frage wie der titel heißt",
+            "frag was gerade läuft",
+            "frage was gerade läuft"
+          ]
+        },
+        {
+          "name": "CurrentPlaylistIntent",
+          "slots": [],
+          "samples": [
+            "frag nach der aktuellen sendung",
+            "frag wie die sendung heißt",
+            "frag welche sendung läuft",
+            "frage nach der aktuellen sendung",
+            "frage wie die sendung heißt",
+            "frage welche sendung läuft"
+          ]
+        },
+        {
+          "name": "NextPlaylistIntent",
+          "slots": [],
+          "samples": [
+            "frag wie die nächste sendung heißt",
+            "frag welche sendung als nächstes kommt",
+            "frag welche sendung als nächstes läuft",
+            "frage wie die nächste sendung heißt",
+            "frage welche sendung als nächstes kommt",
+            "frage welche sendung als nächstes läuft"
+          ]
+        },
+        {
+          "name": "LastSongsIntent",
+          "slots": [],
+          "samples": [
+            "frag was davor lief",
+            "frage was davor lief",
+            "frage was zuletzt lief",
+            "frag was zuletzt lief"
+          ]
         }
       ],
       "types": [],
@@ -61,5 +107,5 @@
       }
     }
   },
-  "version": "5"
+  "version": "37"
 }
