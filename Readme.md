@@ -1,4 +1,4 @@
-# Alexa Single-Skill Template
+# Alexa Single-Skill Template für laut.fm-Stationen
 
 ## Anleitung
 
@@ -13,9 +13,9 @@
 ![Create new skill](./screenshots/create_new_skill_highlight.jpg)
 7. Klicke auf **Import skill**
 ![choose template](./screenshots/choose_template_highlight.jpg)
-8. Füge <https://github.com/laut-ag/alexa-single-skill-template.git> im Textfeld ein.
+8. Füge <https://github.com/paeddy-l/alexa-single-skill-template.git> im Textfeld ein.
 9. Klicke auf **Import**
-![Import git repo](./screenshots/choose_template_import-dialog_highlight.jpg)
+![Import git repo](./screenshots/choose_template_import-dialog_highlight_new.jpg)
 
 ### Build -> Invocation
 
@@ -26,16 +26,16 @@
 
 ### Code
 
-1. Passe `const stationName = "<dein Sendername>"` an:
-2. Passe `const spokenStationName = "<dein ausgesprochener Sendername>"` an:
+1. Passe `const stationName = "STATIONSNAME"` an:
+2. Passe `const spokenStationName = "dein ausgesprochener Sendername"` an:
 
-Ersetze `<dein Station-Name>` mit dem Namen, unter dem man deinen Stream hören kann. d.h. `stream.laut.fm/<dein Sendername>`.
-Ersetze `<dein ausgesprochener Sendername>` mit dem Namen, den Alexa ___sagen___ soll.
+Ersetze `STATIONSNAME` durch den Namen deiner Station - z.B. "eins".
+Ersetze `dein ausgesprochener Sendername` mit dem Namen, den Alexa ___sagen___ soll.
 
 3. Klicke auf **Save**
 4. Klicke auf **Deploy** 
 
-![Code Screen](./screenshots/code_screen_highlight.jpg)
+![Code Screen](./screenshots/code_screen_highlight_new.jpg)
 
 ### Distribution -> Skill Preview -> German
 
