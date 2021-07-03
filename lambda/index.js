@@ -227,7 +227,7 @@ const CurrentSongHandler = {
                 })
                 .getResponse();
             } else {
-                const Card = `${Info.display_name}\n <b>${CurrentSong[0].artist.name}</b>\n ${CurrentSong[0].title}`
+                const Card = `${Info.display_name}\n ${CurrentSong[0].artist.name}\n ${CurrentSong[0].title}`
                 return handlerInput.responseBuilder
                   .speak(ssmlChange(speakText))
                   .withStandardCard('Aktueller Titel', Card, Info.images.station_80x80, Info.images.station_640x640)
@@ -268,7 +268,7 @@ const LastSongsHandler = {
                             "data": `<b>${LastSongs[1].artist.name}</b><br>${LastSongs[1].title}<br><b>${LastSongs[2].artist.name}</b><br>${LastSongs[2].title}`,
                             "image": `${Info.images.station}`,
                             "displayName": `${Info.display_name}`,
-                            "OtherPadding1Top": 0,                          
+                            "OtherPadding1Top": 0,
                             "OtherPadding2Top": 20,
                             "RoundPaddingTop": 50
                         }
@@ -276,7 +276,7 @@ const LastSongsHandler = {
                 })
                 .getResponse();
             } else {
-                const Card = `${Info.display_name}\n <b>${LastSongs[1].artist.name}</b>\n ${LastSongs[2].title}\n<b>${LastSongs[2].artist.name}</b>\n ${LastSongs[2].title}`
+                const Card = `${Info.display_name}\n ${LastSongs[1].artist.name}\n ${LastSongs[2].title}\n${LastSongs[2].artist.name}\n ${LastSongs[2].title}`
                 return handlerInput.responseBuilder
                   .speak(ssmlChange(speakText))
                   .withStandardCard('Zuletzt lief', Card, Info.images.station_80x80, Info.images.station_640x640)
@@ -316,7 +316,7 @@ const CurrentPlaylistHandler = {
                             "data": `${Info.current_playlist.name}`,
                             "image": `${Info.images.station}`,
                             "displayName": `${Info.display_name}`,
-                            "OtherPadding1Top": 40,                          
+                            "OtherPadding1Top": 40,
                             "OtherPadding2Top": 20,
                             "RoundPaddingTop": 90
                         }
@@ -544,7 +544,7 @@ const NextIntentHandler = {
                             "data": "Weiterhin viel Spaß",
                             "image": `${Info.images.station}`,
                             "displayName": `${Info.display_name}`,
-                            "OtherPadding1Top": 40,                          
+                            "OtherPadding1Top": 40,
                             "OtherPadding2Top": 20,
                             "RoundPaddingTop": 90
                         }
@@ -610,7 +610,7 @@ const PreviousRepeatIntentHandler = {
                             "data": `Das kann ich leider nicht.`,
                             "image": `${Info.images.station}`,
                             "displayName": `${Info.display_name}`,
-                            "OtherPadding1Top": 40,                          
+                            "OtherPadding1Top": 40,
                             "OtherPadding2Top": 20,
                             "RoundPaddingTop": 70
                         }
