@@ -275,7 +275,7 @@ const LastSongsHandler = {
                             "data": `${LastSongs[1].artist.name}<br>${LastSongs[1].title}<br>${LastSongs[2].artist.name}<br>${LastSongs[2].title}`,
                             "image": `${Info.images.station}`,
                             "displayName": `${Info.display_name}`,
-                            "OtherPadding1Top": 0
+                            "OtherPadding1Top": 0,
                             "OtherPadding2Top": 20,
                             "RoundPaddingTop": 50
                         }
