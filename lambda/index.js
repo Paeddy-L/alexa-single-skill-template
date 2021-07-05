@@ -48,7 +48,7 @@ const token = function() {
 
 // Read of APL documents for use in handlers
 const StationAPL = function() {
-    return require('./StationDataAPL.json');
+    return require('./station-data-apl.json');
 }
 
 // Create CET or CEST time format instead of UTC
@@ -126,8 +126,8 @@ const LaunchRequestHandler = {
                         "token": token(),
                     },
                     "metadata" : {
-                        "title": `${Info.display_name}`,
-                        "subtitle": `${Info.format}`,
+                        "title": `${Info.format}`,
+                        "subtitle": ``,
                         "art": {
                             "sources": [
                               {
@@ -137,7 +137,14 @@ const LaunchRequestHandler = {
                                 "heightPixels": 512
                               }
                             ]
-                        }
+                        },
+                        "backgroundImage": {
+                            "sources": [
+                              {
+                                "url": ``
+                              }
+                            ]
+                        }                        
                     }
                 }
             };
@@ -494,7 +501,7 @@ const CancelAndStopIntentHandler = {
     }
 };
 
-// Next (weiter)
+// Next / Continue
 const NextIntentHandler = {
     canHandle(handlerInput) {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
@@ -517,8 +524,8 @@ const NextIntentHandler = {
                         "token": token(),
                     },
                     "metadata" : {
-                        "title": `${Info.display_name}`,
-                        "subtitle": `${Info.format}`,
+                        "title": `${Info.format}`,
+                        "subtitle": ``,
                         "art": {
                             "sources": [
                               {
@@ -528,7 +535,14 @@ const NextIntentHandler = {
                                 "heightPixels": 512
                               }
                             ]
-                        }
+                        },
+                        "backgroundImage": {
+                            "sources": [
+                              {
+                                "url": ``
+                              }
+                            ]
+                        }                        
                     }
                 }
             };
@@ -643,13 +657,46 @@ const FallbackIntentHandler = {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
             && Alexa.getIntentName(handlerInput.requestEnvelope) === 'AMAZON.FallbackIntent';
     },
-    handle(handlerInput) {
+    async handle(handlerInput) {
         const speakText = `${messages.fallback}`;
-
-        return handlerInput.responseBuilder
-          .speak(ssmlChange(speakText))
-          .getResponse();
-    }
+        try {
+            const [Info] = await Promise.all([
+                (APIRequest(StationInfoUrl())),
+            ]);
+            if (supportsAPL(handlerInput)) {
+                return handlerInput.responseBuilder
+                .speak(ssmlChange(speakText))
+                .addDirective({
+                    type: `Alexa.Presentation.APL.RenderDocument`,
+                    document: StationAPL(),
+                    datasources: {
+                        "StationData": {
+                            "action": `Information`,
+                            "data": `${speakText}`,
+                            "image": `${Info.images.station}`,
+                            "displayName": `${Info.display_name}`,
+                            "OtherPadding1Top": 40,                          
+                            "OtherPadding2Top": 20,
+                            "RoundPaddingTop": 70
+                        }
+                    }
+                })
+                .getResponse();
+            } else {
+                const Card = `${Info.display_name}\n ${speakText}`
+                return handlerInput.responseBuilder
+                  .speak(ssmlChange(speakText))
+                  .withStandardCard('Information', Card, Info.images.station_80x80, Info.images.station)
+                  .getResponse();
+            }
+        } catch (error) {
+            console.log(`~~~~ Error API: ${error}`);
+            return handlerInput.responseBuilder
+              .speak(ssmlChange(speakText))
+              .withSimpleCard('Information', `${speakText}`)
+              .getResponse();
+        }
+   }
 };
 
 /* *
