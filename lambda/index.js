@@ -126,8 +126,8 @@ const LaunchRequestHandler = {
                         "token": token(),
                     },
                     "metadata" : {
-                        "title": `${Info.format}`,
-                        "subtitle": ``,
+                        "title": `${Info.display_name}`,
+                        "subtitle": `${Info.format}`,
                         "art": {
                             "sources": [
                               {
@@ -160,7 +160,7 @@ const LaunchRequestHandler = {
                             "data": `Herzlich willkommen bei ${Info.display_name}`,
                             "image": `${Info.images.station}`,
                             "displayName": `${Info.display_name}`,
-                            "OtherPadding1Top": 40,                          
+                            "OtherPadding1Top": 40,
                             "OtherPadding2Top": 20,
                             "RoundPaddingTop": 70
                             
@@ -223,10 +223,10 @@ const CurrentSongHandler = {
                     datasources: {
                         "StationData": {
                             "action": `Aktueller Titel`,
-                            "data": `<b>${CurrentSong[0].artist.name}</b><br>${CurrentSong[0].title}`,
+                            "data": `${CurrentSong[0].artist.name}<br>${CurrentSong[0].title}`,
                             "image": `${Info.images.station}`,
                             "displayName": `${Info.display_name}`,
-                            "OtherPadding1Top": 40,                          
+                            "OtherPadding1Top": 40,
                             "OtherPadding2Top": 20,
                             "RoundPaddingTop": 60
                         }
@@ -234,7 +234,7 @@ const CurrentSongHandler = {
                 })
                 .getResponse();
             } else {
-                const Card = `${Info.display_name}\n ${CurrentSong[0].artist.name}\n ${CurrentSong[0].title}`
+                const Card = `${CurrentSong[0].artist.name}\n${CurrentSong[0].title}`
                 return handlerInput.responseBuilder
                   .speak(ssmlChange(speakText))
                   .withStandardCard('Aktueller Titel', Card, Info.images.station_80x80, Info.images.station_640x640)
@@ -272,10 +272,10 @@ const LastSongsHandler = {
                     datasources: {
                         "StationData": {
                             "action": `Zuletzt lief`,
-                            "data": `<b>${LastSongs[1].artist.name}</b><br>${LastSongs[1].title}<br><b>${LastSongs[2].artist.name}</b><br>${LastSongs[2].title}`,
+                            "data": `${LastSongs[1].artist.name}<br>${LastSongs[1].title}<br>${LastSongs[2].artist.name}<br>${LastSongs[2].title}`,
                             "image": `${Info.images.station}`,
                             "displayName": `${Info.display_name}`,
-                            "OtherPadding1Top": 0,
+                            "OtherPadding1Top": 0
                             "OtherPadding2Top": 20,
                             "RoundPaddingTop": 50
                         }
@@ -283,7 +283,7 @@ const LastSongsHandler = {
                 })
                 .getResponse();
             } else {
-                const Card = `${Info.display_name}\n ${LastSongs[1].artist.name}\n ${LastSongs[2].title}\n${LastSongs[2].artist.name}\n ${LastSongs[2].title}`
+                const Card = `${LastSongs[1].artist.name}\n${LastSongs[1].title}\n${LastSongs[2].artist.name}\n${LastSongs[2].title}`
                 return handlerInput.responseBuilder
                   .speak(ssmlChange(speakText))
                   .withStandardCard('Zuletzt lief', Card, Info.images.station_80x80, Info.images.station_640x640)
@@ -331,7 +331,7 @@ const CurrentPlaylistHandler = {
                 })
                 .getResponse();
             } else {
-                const Card = `${Info.display_name}\n ${Info.current_playlist.name}`
+                const Card = `${Info.current_playlist.name}`
                 return handlerInput.responseBuilder
                   .speak(ssmlChange(speakText))
                   .withStandardCard('Aktuelle Sendung', Card, Info.images.station_80x80, Info.images.station)
@@ -366,15 +366,15 @@ const NextPlaylistHandler = {
             const weekday_name = {sun: 'Sonntag', mon: 'Montag', tue: 'Dienstag', wed: 'Mittwoch', thu: 'Donnerstag', fri: 'Freitag', sat: 'Samstag'};        
             if (Info.next_playlist.day === weekday[dateCET_CEST().getDay()]) {
                 speakText = `Ab ${Info.next_playlist.hour} Uhr hörst du ${Info.next_playlist.name}`;
-                Card = `Ab ${Info.next_playlist.hour}:00 Uhr\n ${Info.next_playlist.name}`;
+                Card = `Ab ${Info.next_playlist.hour}:00 Uhr\n${Info.next_playlist.name}`;
                 apl_text = `Ab ${Info.next_playlist.hour}:00 Uhr<br>${Info.next_playlist.name}`;
             } else if (Info.next_playlist.day === weekday[dateCET_CEST().getDay() +1] && Info.next_playlist.hour === 0) {
                 speakText = `Ab ${Info.next_playlist.hour} Uhr hörst du ${Info.next_playlist.name}`;
-                Card = `Ab ${Info.next_playlist.hour}:00 Uhr\n ${Info.next_playlist.name}`;
+                Card = `Ab ${Info.next_playlist.hour}:00 Uhr\n${Info.next_playlist.name}`;
                 apl_text = `Ab ${Info.next_playlist.hour}:00 Uhr<br>${Info.next_playlist.name}`;
             } else if (Info.next_playlist.day === weekday[dateCET_CEST().getDay() +1]) {
                 speakText = `Morgen ab ${Info.next_playlist.hour} Uhr hörst du ${Info.next_playlist.name}`;
-                Card = `Morgen ab ${Info.next_playlist.hour}:00 Uhr\n ${Info.next_playlist.name}`;
+                Card = `Morgen ab ${Info.next_playlist.hour}:00 Uhr\n${Info.next_playlist.name}`;
                 apl_text = `Morgen ab ${Info.next_playlist.hour}:00 Uhr<br>${Info.next_playlist.name}`;                
             } else {
                 speakText = `Am ${weekday_name[Info.next_playlist.day]} hörst du ab ${Info.next_playlist.hour} Uhr ${Info.next_playlist.name}`;
@@ -440,7 +440,7 @@ const PauseIntentHandler = {
                             "data": `Mit weiter, geht's weiter`,
                             "image": `${Info.images.station}`,
                             "displayName": `${Info.display_name}`,
-                            "OtherPadding1Top": 40,                          
+                            "OtherPadding1Top": 40,
                             "OtherPadding2Top": 20,
                             "RoundPaddingTop": 70
                         }
@@ -449,7 +449,7 @@ const PauseIntentHandler = {
                 .addAudioPlayerStopDirective()
                 .getResponse();
             } else {
-                const Card = `${Info.display_name}\n Mit weiter, geht's weiter`
+                const Card = `Mit weiter, geht's weiter`
                 return handlerInput.responseBuilder
                   .addAudioPlayerStopDirective()
                   .speak(ssmlChange(speakText))
@@ -524,8 +524,8 @@ const NextIntentHandler = {
                         "token": token(),
                     },
                     "metadata" : {
-                        "title": `${Info.format}`,
-                        "subtitle": ``,
+                        "title": `${Info.display_name}`,
+                        "subtitle": `${Info.format}`,
                         "art": {
                             "sources": [
                               {
@@ -567,7 +567,7 @@ const NextIntentHandler = {
                 .addAudioPlayerPlayDirective('REPLACE_ALL', url, StreamInfo.audioItem.stream.token, 0, null, StreamInfo.audioItem.metadata)
                 .getResponse();
             } else {
-                const Card = `${Info.display_name}\n ${messages.continue}`
+                const Card = `${messages.continue}`
                 return handlerInput.responseBuilder
                   .speak(ssmlChange(speakText))
                   .withStandardCard('Weiter', Card, Info.images.station_80x80, Info.images.station)
@@ -588,7 +588,7 @@ const NextIntentHandler = {
                     }
                 }
             };
-            const Card = `${stationNameClean()}\n ${messages.continue}`
+            const Card = `${stationNameClean()}\n${messages.continue}`
             return handlerInput.responseBuilder
               .speak(ssmlChange(speakText))
               .withSimpleCard('Weiter', Card)
@@ -632,7 +632,7 @@ const PreviousRepeatIntentHandler = {
                 })
                 .getResponse();
             } else {
-                const Card = `${Info.display_name}\n Das kann ich leider nicht.`
+                const Card = `Das kann ich leider nicht.`
                 return handlerInput.responseBuilder
                   .speak(ssmlChange(speakText))
                   .withStandardCard('Information', Card, Info.images.station_80x80, Info.images.station)
@@ -675,7 +675,7 @@ const FallbackIntentHandler = {
                             "data": `${speakText}`,
                             "image": `${Info.images.station}`,
                             "displayName": `${Info.display_name}`,
-                            "OtherPadding1Top": 40,                          
+                            "OtherPadding1Top": 40,
                             "OtherPadding2Top": 20,
                             "RoundPaddingTop": 70
                         }
@@ -683,7 +683,7 @@ const FallbackIntentHandler = {
                 })
                 .getResponse();
             } else {
-                const Card = `${Info.display_name}\n ${speakText}`
+                const Card = `${speakText}`
                 return handlerInput.responseBuilder
                   .speak(ssmlChange(speakText))
                   .withStandardCard('Information', Card, Info.images.station_80x80, Info.images.station)
