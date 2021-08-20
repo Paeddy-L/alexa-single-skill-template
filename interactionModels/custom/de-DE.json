@@ -56,46 +56,36 @@
           "name": "CurrentSongIntent",
           "slots": [],
           "samples": [
-            "frag was aktuell läuft",
-            "frage was aktuell läuft",
-            "frag wie der titel heißt",
-            "frage wie der titel heißt",
-            "frag was gerade läuft",
-            "frage was gerade läuft"
+            "was aktuell läuft",
+            "wie der titel heißt",
+            "was gerade läuft",
+            "wie das lied heißt"
           ]
         },
         {
           "name": "CurrentPlaylistIntent",
           "slots": [],
           "samples": [
-            "frag nach der aktuellen sendung",
-            "frag wie die sendung heißt",
-            "frag welche sendung läuft",
-            "frage nach der aktuellen sendung",
-            "frage wie die sendung heißt",
-            "frage welche sendung läuft"
+			"wie die aktuelle sendung heißt",
+            "nach der aktuellen sendung",
+            "welche sendung läuft"
           ]
         },
         {
           "name": "NextPlaylistIntent",
           "slots": [],
           "samples": [
-            "frag wie die nächste sendung heißt",
-            "frag welche sendung als nächstes kommt",
-            "frag welche sendung als nächstes läuft",
-            "frage wie die nächste sendung heißt",
-            "frage welche sendung als nächstes kommt",
-            "frage welche sendung als nächstes läuft"
+			"wie die nächste sendung heißt",
+            "welche sendung als nächstes kommt",
+            "welche sendung als nächstes läuft"
           ]
         },
         {
           "name": "LastSongsIntent",
           "slots": [],
           "samples": [
-            "frag was davor lief",
-            "frage was davor lief",
-            "frage was zuletzt lief",
-            "frag was zuletzt lief"
+			"was davor lief",
+            "was zuletzt lief"
           ]
         }
       ],
