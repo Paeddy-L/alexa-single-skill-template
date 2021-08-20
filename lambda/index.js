@@ -35,7 +35,7 @@ const messages = {
 
 // Clean station name
 const stationNameClean = function() {
-    return stationName.substring(stationName.lastIndexOf("/") + 1).replace(/[^A-Za-z0-9-_]/g,'').toLowerCase()
+    return stationName.substring(stationName.lastIndexOf("/") + 1).replace(/[^A-Za-z0-9-_]/g,'').toLowerCase();
 }
 
 // Create the stream URL
@@ -745,7 +745,7 @@ const ErrorHandler = {
     },
     handle(handlerInput, error) {
         const speakText = `${messages.fallback}`;
-        console.log(`~~~~ Error handled: ${JSON.stringify(error)}`);
+        //console.log(`~~~~ Error handled: ${JSON.stringify(error)}`);
 
         return handlerInput.responseBuilder
           .speak(ssmlChange(speakText))
@@ -776,5 +776,6 @@ exports.handler = Alexa.SkillBuilders.custom()
         IntentReflectorHandler,
     )
     .addErrorHandlers(
-        ErrorHandler)
+        ErrorHandler
+    )
     .lambda();
