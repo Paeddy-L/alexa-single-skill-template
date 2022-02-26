@@ -4,7 +4,7 @@
 
 ### Create Skill
 
-1. Logge dich auf <https://developer.amazon.com/alexa/console/ask/> ein (dazu benötigst du ein Amazon-Konto).
+1. Logge dich auf <https://developer.amazon.com/alexa/console/ask/> ein (dazu benötigst du ein Konto bei Amazon mit Developer-Registrierung).
 2. Klicke auf **Create New Skill**
 3. Gib den gewünschten Namen unter **Skill name** ein.
 4. Wähle bei **Default language** -> **German(DE)** aus.
