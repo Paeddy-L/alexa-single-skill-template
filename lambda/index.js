@@ -26,7 +26,7 @@ const messages = {
     welcome:
         `Herzlich Willkommen bei ${spokenStationName}`,
     more:
-        'Wenn Du mehr Sender hören willst, besuch uns auf laut punkt <say-as interpret-as="cardinal">FM</say-as>.',
+        'Wenn Du mehr Sender hören willst, besuche uns auf laut punkt <say-as interpret-as="cardinal">FM</say-as>.',
     unable:
         'Das kann ich leider nicht.',
     fallback:
