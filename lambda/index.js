@@ -109,7 +109,8 @@ const LaunchRequestHandler = {
     canHandle(handlerInput) {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'LaunchRequest'
           || (Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
-          && Alexa.getIntentName(handlerInput.requestEnvelope) === 'PlayStationIntent');
+          && Alexa.getIntentName(handlerInput.requestEnvelope) === 'PlayStationIntent'
+          || Alexa.getIntentName(handlerInput.requestEnvelope) === 'AMAZON.StartOverIntent');
     },
     async handle(handlerInput) {
         const speakText = `${messages.welcome}`;
